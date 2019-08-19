@@ -1,7 +1,6 @@
-
-
-import {from as observableFrom, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import { ClientResponse } from 'http';
+import {from as observableFrom, Observable, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {BlockchainStorageInfo} from '../model/blockchain/BlockchainStorageInfo';
 import { ServerInfo } from '../model/diagnostic/ServerInfo';
 import { DiagnosticRoutesApi, ServerDTO, StorageInfoDTO } from './api';
@@ -35,13 +34,17 @@ export class DiagnosticHttp extends Http implements DiagnosticRepository {
      */
     public getDiagnosticStorage(): Observable<BlockchainStorageInfo> {
         return observableFrom(
-            this.diagnosticRoutesApi.getDiagnosticStorage()).pipe(map((blockchainStorageInfoDTO:any) => {
-            return new BlockchainStorageInfo(
-                blockchainStorageInfoDTO.numBlocks,
-                blockchainStorageInfoDTO.numTransactions,
-                blockchainStorageInfoDTO.numAccounts,
-            );
-        }));
+            this.diagnosticRoutesApi.getDiagnosticStorage()).pipe(
+            map((response: { response: ClientResponse; body: StorageInfoDTO; } ) => {
+                const blockchainStorageInfoDTO = response.body;
+                return new BlockchainStorageInfo(
+                    blockchainStorageInfoDTO.numBlocks,
+                    blockchainStorageInfoDTO.numTransactions,
+                    blockchainStorageInfoDTO.numAccounts,
+                );
+            }),
+            catchError((error) =>  throwError(this.errorHandling(error))),
+        );
     }
 
     /**
@@ -50,9 +53,13 @@ export class DiagnosticHttp extends Http implements DiagnosticRepository {
      */
     public getServerInfo(): Observable<ServerInfo> {
         return observableFrom(
-            this.diagnosticRoutesApi.getServerInfo()).pipe(map((serverDTO:any) => {
-            return new ServerInfo(serverDTO.serverInfo.restVersion,
-                serverDTO.serverInfo.sdkVersion);
-        }));
+            this.diagnosticRoutesApi.getServerInfo()).pipe(
+            map((response: { response: ClientResponse; body: ServerDTO; } ) => {
+                const serverDTO = response.body;
+                return new ServerInfo(serverDTO.serverInfo.restVersion,
+                    serverDTO.serverInfo.sdkVersion);
+            }),
+            catchError((error) =>  throwError(this.errorHandling(error))),
+        );
     }
 }

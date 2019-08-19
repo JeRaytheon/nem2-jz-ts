@@ -14,7 +14,7 @@ import {flatbuffers} from 'flatbuffers';
  * @module transactions/AddressAliasTransaction
  */
 export class AddressAliasTransaction extends VerifiableTransaction {
-    constructor(bytes:any) {
+    constructor(bytes:any ) {
         super(bytes, AddressAliasTransactionSchema);
     }
 }
@@ -26,43 +26,43 @@ export class Builder {
     deadline: any;
     address: any;
     namespaceId: any;
-    actionType: any;
+    aliasAction: any;
     constructor() {
         this.maxFee = [0, 0];
         this.type = TransactionType.ADDRESS_ALIAS;
     }
 
-    addFee(maxFee:any) {
+    addFee(maxFee:any ) {
         this.maxFee = maxFee;
         return this;
     }
 
-    addVersion(version:any) {
+    addVersion(version:any ) {
         this.version = version;
         return this;
     }
 
-    addType(type:any) {
+    addType(type:any ) {
         this.type = type;
         return this;
     }
 
-    addDeadline(deadline:any) {
+    addDeadline(deadline:any ) {
         this.deadline = deadline;
         return this;
     }
 
-    addActionType(actionType:any) {
-        this.actionType = actionType;
+    addAliasAction(aliasAction:any ) {
+        this.aliasAction = aliasAction;
         return this;
     }
 
-    addNamespaceId(namespaceId:any) {
+    addNamespaceId(namespaceId:any ) {
         this.namespaceId = namespaceId;
         return this;
     }
 
-    addAddress(address:any) {
+    addAddress(address:any ) {
         this.address = addressLibrary.stringToAddress(address);
         return this;
     }
@@ -92,7 +92,7 @@ export class Builder {
         AddressAliasTransactionBuffer.addType(builder, this.type);
         AddressAliasTransactionBuffer.addFee(builder, feeVector);
         AddressAliasTransactionBuffer.addDeadline(builder, deadlineVector);
-        AddressAliasTransactionBuffer.addActionType(builder, this.actionType);
+        AddressAliasTransactionBuffer.addAliasAction(builder, this.aliasAction);
         AddressAliasTransactionBuffer.addNamespaceId(builder, namespaceIdVector);
         AddressAliasTransactionBuffer.addAddress(builder, addressVector);
 

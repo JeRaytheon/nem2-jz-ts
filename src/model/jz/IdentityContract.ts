@@ -26,14 +26,15 @@ export class IdentityContract extends BaseContract {
     accountLevel: string;
 
     /**
-     * 
+     *
      * The ApostilleData
      */
     ApostilleData:ApostilleData;
 
+
     /**
      * CompanyIdentity
-     * @param entity 
+     * @param entity
      */
     public static async toStr(entity:IdentityContract){
          return JSON.stringify(entity);

@@ -1,11 +1,9 @@
-
-
 import { Builder } from '../../infrastructure/builders/AddressAliasTransaction';
 import { VerifiableTransaction } from '../../infrastructure/builders/VerifiableTransaction';
 import { Address } from '../account/Address';
 import { PublicAccount } from '../account/PublicAccount';
 import { NetworkType } from '../blockchain/NetworkType';
-import { AliasActionType } from '../namespace/AliasActionType';
+import { AliasAction } from '../namespace/AliasAction';
 import { NamespaceId } from '../namespace/NamespaceId';
 import { UInt64 } from '../UInt64';
 import { Deadline } from './Deadline';
@@ -23,7 +21,7 @@ export class AddressAliasTransaction extends Transaction {
     /**
      * Create a address alias transaction object
      * @param deadline - The deadline to include the transaction.
-     * @param actionType - The alias action type.
+     * @param aliasAction - The alias action type.
      * @param namespaceId - The namespace id.
      * @param address - The address.
      * @param networkType - The network type.
@@ -31,7 +29,7 @@ export class AddressAliasTransaction extends Transaction {
      * @returns {AddressAliasTransaction}
      */
     public static create(deadline: Deadline,
-                         actionType: AliasActionType,
+                         aliasAction: AliasAction,
                          namespaceId: NamespaceId,
                          address: Address,
                          networkType: NetworkType,
@@ -40,7 +38,7 @@ export class AddressAliasTransaction extends Transaction {
             TransactionVersion.ADDRESS_ALIAS,
             deadline,
             maxFee,
-            actionType,
+            aliasAction,
             namespaceId,
             address,
         );
@@ -51,7 +49,7 @@ export class AddressAliasTransaction extends Transaction {
      * @param version
      * @param deadline
      * @param maxFee
-     * @param actionType
+     * @param aliasAction
      * @param namespaceId
      * @param address
      * @param signature
@@ -65,7 +63,7 @@ export class AddressAliasTransaction extends Transaction {
                 /**
                  * The alias action type.
                  */
-                public readonly actionType: AliasActionType,
+                public readonly aliasAction: AliasAction,
                 /**
                  * The namespace id that will be an alias.
                  */
@@ -106,7 +104,7 @@ export class AddressAliasTransaction extends Transaction {
             .addDeadline(this.deadline.toDTO())
             .addFee(this.maxFee.toDTO())
             .addVersion(this.versionToDTO())
-            .addActionType(this.actionType)
+            .addAliasAction(this.aliasAction)
             .addNamespaceId(this.namespaceId.id.toDTO())
             .addAddress(this.address.plain())
             .build();

@@ -1,3 +1,4 @@
+
 import { TransactionType } from '../../model/transaction/TransactionType';
 import MosaicAliasTransactionBufferPackage from '../buffers/MosaicAliasTransactionBuffer';
 import MosaicAliasTransactionSchema from '../schemas/MosaicAliasTransactionSchema';
@@ -13,7 +14,7 @@ import {flatbuffers} from 'flatbuffers';
  * @module transactions/MosaicAliasTransaction
  */
 export default class MosaicAliasTransaction extends VerifiableTransaction {
-    constructor(bytes:any) {
+    constructor(bytes:any ) {
         super(bytes, MosaicAliasTransactionSchema);
     }
 }
@@ -25,44 +26,44 @@ export class Builder {
     type: any;
     deadline: any;
     mosaicId: any;
-    actionType: any;
+    aliasAction: any;
     namespaceId: any;
     constructor() {
         this.maxFee = [0, 0];
         this.type = TransactionType.MOSAIC_ALIAS;
     }
 
-    addFee(maxFee:any) {
+    addFee(maxFee:any ) {
         this.maxFee = maxFee;
         return this;
     }
 
-    addVersion(version:any) {
+    addVersion(version:any ) {
         this.version = version;
         return this;
     }
 
-    addType(type:any) {
+    addType(type:any ) {
         this.type = type;
         return this;
     }
 
-    addDeadline(deadline:any) {
+    addDeadline(deadline:any ) {
         this.deadline = deadline;
         return this;
     }
 
-    addActionType(actionType:any) {
-        this.actionType = actionType;
+    addAliasAction(aliasAction:any ) {
+        this.aliasAction = aliasAction;
         return this;
     }
 
-    addNamespaceId(namespaceId:any) {
+    addNamespaceId(namespaceId:any ) {
         this.namespaceId = namespaceId;
         return this;
     }
 
-    addMosaicId(mosaicId:any) {
+    addMosaicId(mosaicId:any ) {
         this.mosaicId = mosaicId;
         return this;
     }
@@ -92,7 +93,7 @@ export class Builder {
         MosaicAliasTransactionBuffer.addType(builder, this.type);
         MosaicAliasTransactionBuffer.addFee(builder, feeVector);
         MosaicAliasTransactionBuffer.addDeadline(builder, deadlineVector);
-        MosaicAliasTransactionBuffer.addActionType(builder, this.actionType);
+        MosaicAliasTransactionBuffer.addAliasAction(builder, this.aliasAction);
         MosaicAliasTransactionBuffer.addNamespaceId(builder, namespaceIdVector);
         MosaicAliasTransactionBuffer.addMosaicId(builder, mosaicIdVector);
 

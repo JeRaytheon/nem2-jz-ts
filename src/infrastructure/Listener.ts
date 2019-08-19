@@ -1,5 +1,3 @@
-
-
 import {Observable, Subject} from 'rxjs';
 import {filter, map, share} from 'rxjs/operators';
 import * as WebSocket from 'ws';
@@ -34,7 +32,6 @@ enum ListenerChannelName {
     status = 'status',
 }
 
-// tslint:disable-next-line: interface-name
 interface ListenerMessage {
     readonly channelName: ListenerChannelName;
     readonly message: Transaction | string | BlockInfo | TransactionStatusError | CosignatureSignedTransaction;
@@ -69,11 +66,11 @@ export class Listener {
     constructor(/**
                  * Listener configuration.
                  */
-                    private config: string,
+                private config: string,
                 /**
                  * WebSocket injected when using listeners in client.
                  */
-                    private websocketInjected?: any) {
+                private websocketInjected?: any) {
         this.config = config.replace(/\/$/, '');
         this.url = `${this.config}/ws`;
         this.messageSubject = new Subject();
@@ -83,7 +80,6 @@ export class Listener {
      * Open web socket connection.
      * @returns Promise<Void>
      */
-    // tslint:disable-next-line: promise-function-async
     public open(): Promise<void> {
         return new Promise((resolve, reject) => {
             if (this.webSocket === undefined || this.webSocket.readyState === WebSocket.CLOSED) {
@@ -196,10 +192,10 @@ export class Listener {
         this.subscribeTo('block');
         return this.messageSubject
             .asObservable().pipe(
-            share(),
-            filter((_) => _.channelName === ListenerChannelName.block),
-            filter((_) => _.message instanceof BlockInfo),
-            map((_) => _.message as BlockInfo));
+                share(),
+                filter((_) => _.channelName === ListenerChannelName.block),
+                filter((_) => _.message instanceof BlockInfo),
+                map((_) => _.message as BlockInfo));
     }
 
     /**
@@ -381,7 +377,7 @@ export class Listener {
         }
 
         return transaction.signer!.address.equals(address) || (
-               transaction instanceof TransferTransaction
+            transaction instanceof TransferTransaction
             && (transaction.recipient as Address).equals(address)
         );
     }
@@ -397,7 +393,7 @@ export class Listener {
     private accountAddedToMultiSig(transaction: Transaction, address: Address): boolean {
         if (transaction instanceof ModifyMultisigAccountTransaction) {
             transaction.modifications.map((_: MultisigCosignatoryModification) => {
-                if (_.type === MultisigCosignatoryModificationType.Add && _.cosignatoryPublicAccount.address.equals(address)) {
+                if (_.modificiationType === MultisigCosignatoryModificationType.Add && _.cosignatoryPublicAccount.address.equals(address)) {
                     return true;
                 }
             });

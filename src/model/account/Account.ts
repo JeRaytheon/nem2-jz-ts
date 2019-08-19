@@ -1,5 +1,3 @@
-
-
 import {Crypto, KeyPair, SignSchema} from '../../core/crypto';
 import {Convert as convert, RawAddress as AddressLibrary} from '../../core/format';
 import {NetworkType} from '../blockchain/NetworkType';
@@ -30,19 +28,20 @@ export class Account {
      * @param {SignSchema} signSchema The Sign Schema. (KECCAK_REVERSED_KEY / SHA3)
      */
     private constructor(
-                        /**
-                         * The account address.
-                         */
-                        public readonly address: Address,
-                        /**
-                         * The account keyPair, public and private key.
-                         */
-                        private readonly keyPair: IKeyPair,
-                        /**
-                         * The Sign Schema (KECCAK_REVERSED_KEY / SHA3).
-                         */
-                        private readonly signSchema: SignSchema = SignSchema.SHA3) {
+        /**
+         * The account address.
+         */
+        public readonly address: Address,
+        /**
+         * The account keyPair, public and private key.
+         */
+        private readonly keyPair: IKeyPair,
+        /**
+         * The Sign Schema (KECCAK_REVERSED_KEY / SHA3).
+         */
+        private readonly signSchema: SignSchema = SignSchema.SHA3) {
     }
+
     /**
      * Create an Account from a given private key
      * @param privateKey - Private key from an account
@@ -153,9 +152,24 @@ export class Account {
                                             cosignatories: Account[],
                                             generationHash: string,
                                             signSchema: SignSchema = SignSchema.SHA3): SignedTransaction {
-    return transaction.signTransactionWithCosignatories(this, cosignatories, generationHash, signSchema);
+        return transaction.signTransactionWithCosignatories(this, cosignatories, generationHash, signSchema);
     }
 
+    /**
+     * Sign transaction with cosignatories collected from cosigned transactions and creating a new SignedTransaction
+     * For off chain Aggregated Complete Transaction co-signing.
+     * @param initiatorAccount - Initiator account
+     * @param {CosignatureSignedTransaction[]} cosignatureSignedTransactions - Array of cosigned transaction
+     * @param generationHash - Network generation hash hex
+     * @param {SignSchema} signSchema The Sign Schema. (KECCAK_REVERSED_KEY / SHA3)
+     * @return {SignedTransaction}
+     */
+    public signTransactionGivenSignatures(transaction: AggregateTransaction,
+                                          cosignatureSignedTransactions: CosignatureSignedTransaction[],
+                                          generationHash: string,
+                                          signSchema: SignSchema = SignSchema.SHA3): SignedTransaction {
+        return transaction.signTransactionGivenSignatures(this, cosignatureSignedTransactions, generationHash, signSchema);
+    }
     /**
      * Sign aggregate signature transaction
      * @param cosignatureTransaction - The aggregate signature transaction.
@@ -175,8 +189,8 @@ export class Account {
      */
     public signData(data: string, signSchema: SignSchema = SignSchema.SHA3): string {
         return convert.uint8ToHex(KeyPair.sign(this.keyPair,
-                            convert.hexToUint8(convert.utf8ToHex(data)),
-                            signSchema,
-                        ));
+            convert.hexToUint8(convert.utf8ToHex(data)),
+            signSchema,
+        ));
     }
 }

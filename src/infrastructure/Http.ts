@@ -1,5 +1,3 @@
-
-
 import {Observable, of as observableOf} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {NetworkType} from '../model/blockchain/NetworkType';
@@ -42,5 +40,16 @@ export abstract class Http {
             id: queryParams ? queryParams.id : undefined,
             order: queryParams ? queryParams.order : undefined,
         };
+    }
+
+    errorHandling(error: any): Error {
+        if (error.response && error.response.statusCode && error.response.body) {
+            const formattedError = {
+                statusCode: error.response.statusCode,
+                errorDetails: error.response.body,
+            };
+            return new Error(JSON.stringify(formattedError));
+        }
+        return new Error(error);
     }
 }

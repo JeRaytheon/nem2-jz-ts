@@ -1,3 +1,7 @@
+
+/**
+ * @module transactions/AggregateTransaction
+ */
 import { SignSchema } from '../../core/crypto';
 import { TransactionType } from '../../model/transaction/TransactionType';
 import AggregateTransactionBufferPackage from '../buffers/AggregateTransactionBuffer';
@@ -12,13 +16,13 @@ const {
 } = AggregateTransactionBufferPackage.Buffers;
 
 export class AggregateTransaction extends VerifiableTransaction {
-    constructor(bytes:any) {
+    constructor(bytes:any ) {
         super(bytes, AggregateTransactionSchema);
     }
 
-    signTransactionWithCosigners(initializer:any, cosigners:any, generationHash:any, signSchema: SignSchema = SignSchema.SHA3) {
+    signTransactionWithCosigners(initializer:any , cosigners:any , generationHash:any , signSchema: SignSchema = SignSchema.SHA3) {
         const signedTransaction = this.signTransaction(initializer, generationHash, signSchema);
-        cosigners.forEach((cosigner:any) => {
+        cosigners.forEach((cosigner:any ) => {
             const signatureTransaction = new CosignatureTransaction(signedTransaction.hash);
             const signatureCosignTransaction = signatureTransaction.signCosignatoriesTransaction(cosigner, signSchema);
             signedTransaction.payload = signedTransaction.payload +
@@ -37,9 +41,9 @@ export class AggregateTransaction extends VerifiableTransaction {
         return signedTransaction;
     }
 
-    signTransactionGivenSignatures(initializer:any, cosignedSignedTransactions:any, generationHash:any, signSchema:any) {
+    signTransactionGivenSignatures(initializer:any , cosignedSignedTransactions:any , generationHash:any , signSchema = SignSchema.SHA3) {
         const signedTransaction = this.signTransaction(initializer, generationHash, signSchema);
-        cosignedSignedTransactions.forEach((cosignedTransaction:any) => {
+        cosignedSignedTransactions.forEach((cosignedTransaction:any ) => {
             signedTransaction.payload = signedTransaction.payload + cosignedTransaction.signer + cosignedTransaction.signature;
         });
 
@@ -67,28 +71,28 @@ export class Builder {
         this.type = TransactionType.AGGREGATE_COMPLETE;
     }
 
-    addFee(maxFee:any) {
+    addFee(maxFee:any ) {
         this.maxFee = maxFee;
         return this;
     }
 
-    addVersion(version:any) {
+    addVersion(version:any ) {
         this.version = version;
         return this;
     }
 
-    addType(type:any) {
+    addType(type:any ) {
         this.type = type;
         return this;
     }
 
-    addDeadline(deadline:any) {
+    addDeadline(deadline:any ) {
         this.deadline = deadline;
         return this;
     }
 
-    addTransactions(transactions:any) {
-        let tmp:any = [];
+    addTransactions(transactions:any ) {
+        let tmp:any  = [];
         for (let i = 0; i < transactions.length; ++i) {
             tmp = tmp.concat(transactions[i]);
         }

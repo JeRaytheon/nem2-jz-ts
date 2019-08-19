@@ -2,7 +2,7 @@
  * @const
  * @namespace
  */
-var Catapult:any = Catapult || {};
+var Catapult: any = Catapult || {};
 
 /**
  * @const
@@ -13,7 +13,7 @@ Catapult.Buffers = Catapult.Buffers || {};
 /**
  * @constructor
  */
-Catapult.Buffers.AddressAliasTransactionBuffer = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer = function () {
     /**
      * @type {flatbuffers.ByteBuffer}
      */
@@ -30,7 +30,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer = function() {
  * @param {flatbuffers.ByteBuffer} bb
  * @returns {Catapult.Buffers.AddressAliasTransactionBuffer}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.__init = function(i:any, bb:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.__init = function (i: any, bb: any) {
     this.bb_pos = i;
     this.bb = bb;
     return this;
@@ -41,14 +41,14 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.__init = function(i:any
  * @param {Catapult.Buffers.AddressAliasTransactionBuffer=} obj
  * @returns {Catapult.Buffers.AddressAliasTransactionBuffer}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.getRootAsAddressAliasTransactionBuffer = function(bb:any, obj:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.getRootAsAddressAliasTransactionBuffer = function (bb: any, obj: any) {
     return (obj || new Catapult.Buffers.AddressAliasTransactionBuffer).__init(bb.readInt32(bb.position()) + bb.position(), bb);
 };
 
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.size = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.size = function () {
     var offset = this.bb.__offset(this.bb_pos, 4);
     return offset ? this.bb.readUint32(this.bb_pos + offset) : 0;
 };
@@ -57,7 +57,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.size = function() {
  * @param {number} index
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signature = function(index:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signature = function (index:any) {
     var offset = this.bb.__offset(this.bb_pos, 6);
     return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
 };
@@ -65,7 +65,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signature = function(in
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signatureLength = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signatureLength = function () {
     var offset = this.bb.__offset(this.bb_pos, 6);
     return offset ? this.bb.__vector_len(this.bb_pos + offset) : 0;
 };
@@ -73,7 +73,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signatureLength = funct
 /**
  * @returns {Uint8Array}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signatureArray = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signatureArray = function () {
     var offset = this.bb.__offset(this.bb_pos, 6);
     return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
@@ -82,7 +82,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signatureArray = functi
  * @param {number} index
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signer = function(index:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signer = function (index:any ) {
     var offset = this.bb.__offset(this.bb_pos, 8);
     return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
 };
@@ -90,7 +90,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signer = function(index
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signerLength = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signerLength = function () {
     var offset = this.bb.__offset(this.bb_pos, 8);
     return offset ? this.bb.__vector_len(this.bb_pos + offset) : 0;
 };
@@ -98,7 +98,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signerLength = function
 /**
  * @returns {Uint8Array}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signerArray = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signerArray = function () {
     var offset = this.bb.__offset(this.bb_pos, 8);
     return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
@@ -106,7 +106,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.signerArray = function(
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.version = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.version = function () {
     var offset = this.bb.__offset(this.bb_pos, 10);
     return offset ? this.bb.readUint16(this.bb_pos + offset) : 0;
 };
@@ -114,7 +114,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.version = function() {
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.type = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.type = function () {
     var offset = this.bb.__offset(this.bb_pos, 12);
     return offset ? this.bb.readUint16(this.bb_pos + offset) : 0;
 };
@@ -123,7 +123,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.type = function() {
  * @param {number} index
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.fee = function(index:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.fee = function (index:any) {
     var offset = this.bb.__offset(this.bb_pos, 14);
     return offset ? this.bb.readUint32(this.bb.__vector(this.bb_pos + offset) + index * 4) : 0;
 };
@@ -131,7 +131,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.fee = function(index:an
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.feeLength = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.feeLength = function () {
     var offset = this.bb.__offset(this.bb_pos, 14);
     return offset ? this.bb.__vector_len(this.bb_pos + offset) : 0;
 };
@@ -139,7 +139,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.feeLength = function() 
 /**
  * @returns {Uint32Array}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.feeArray = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.feeArray = function () {
     var offset = this.bb.__offset(this.bb_pos, 14);
     return offset ? new Uint32Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
@@ -148,7 +148,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.feeArray = function() {
  * @param {number} index
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadline = function(index:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadline = function (index:any) {
     var offset = this.bb.__offset(this.bb_pos, 16);
     return offset ? this.bb.readUint32(this.bb.__vector(this.bb_pos + offset) + index * 4) : 0;
 };
@@ -156,7 +156,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadline = function(ind
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadlineLength = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadlineLength = function () {
     var offset = this.bb.__offset(this.bb_pos, 16);
     return offset ? this.bb.__vector_len(this.bb_pos + offset) : 0;
 };
@@ -164,7 +164,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadlineLength = functi
 /**
  * @returns {Uint32Array}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadlineArray = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadlineArray = function () {
     var offset = this.bb.__offset(this.bb_pos, 16);
     return offset ? new Uint32Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
@@ -172,7 +172,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.deadlineArray = functio
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.actionType = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.aliasAction = function () {
     var offset = this.bb.__offset(this.bb_pos, 18);
     return offset ? this.bb.readUint8(this.bb_pos + offset) : 0;
 };
@@ -181,7 +181,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.actionType = function()
  * @param {number} index
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceId = function(index:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceId = function (index:any) {
     var offset = this.bb.__offset(this.bb_pos, 20);
     return offset ? this.bb.readUint32(this.bb.__vector(this.bb_pos + offset) + index * 4) : 0;
 };
@@ -189,7 +189,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceId = function(
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceIdLength = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceIdLength = function () {
     var offset = this.bb.__offset(this.bb_pos, 20);
     return offset ? this.bb.__vector_len(this.bb_pos + offset) : 0;
 };
@@ -197,7 +197,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceIdLength = fun
 /**
  * @returns {Uint32Array}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceIdArray = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceIdArray = function () {
     var offset = this.bb.__offset(this.bb_pos, 20);
     return offset ? new Uint32Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
@@ -206,7 +206,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.namespaceIdArray = func
  * @param {number} index
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.address = function(index:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.address = function (index:any) {
     var offset = this.bb.__offset(this.bb_pos, 22);
     return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index * 4) : 0;
 };
@@ -214,7 +214,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.address = function(inde
 /**
  * @returns {number}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.addressLength = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.addressLength = function () {
     var offset = this.bb.__offset(this.bb_pos, 22);
     return offset ? this.bb.__vector_len(this.bb_pos + offset) : 0;
 };
@@ -222,7 +222,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.addressLength = functio
 /**
  * @returns {Uint32Array}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.prototype.addressArray = function() {
+Catapult.Buffers.AddressAliasTransactionBuffer.prototype.addressArray = function () {
     var offset = this.bb.__offset(this.bb_pos, 22);
     return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
@@ -230,7 +230,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.prototype.addressArray = function
 /**
  * @param {flatbuffers.Builder} builder
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startAddressAliasTransactionBuffer = function(builder:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startAddressAliasTransactionBuffer = function (builder:any) {
     builder.startObject(10);
 };
 
@@ -238,7 +238,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.startAddressAliasTransactionBuffe
  * @param {flatbuffers.Builder} builder
  * @param {number} size
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addSize = function(builder:any, size:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addSize = function (builder:any , size:any) {
     builder.addFieldInt32(0, size, 0);
 };
 
@@ -246,7 +246,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addSize = function(builder:any, s
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} signatureOffset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addSignature = function(builder:any, signatureOffset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addSignature = function (builder:any, signatureOffset:any) {
     builder.addFieldOffset(1, signatureOffset, 0);
 };
 
@@ -255,7 +255,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addSignature = function(builder:a
  * @param {Array.<number>} data
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.createSignatureVector = function(builder:any, data:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.createSignatureVector = function (builder:any, data:any) {
     builder.startVector(1, data.length, 1);
     for (var i = data.length - 1; i >= 0; i--) {
         builder.addInt8(data[i]);
@@ -267,7 +267,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.createSignatureVector = function(
  * @param {flatbuffers.Builder} builder
  * @param {number} numElems
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startSignatureVector = function(builder:any, numElems:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startSignatureVector = function (builder:any, numElems:any) {
     builder.startVector(1, numElems, 1);
 };
 
@@ -275,7 +275,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.startSignatureVector = function(b
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} signerOffset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addSigner = function(builder:any, signerOffset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addSigner = function (builder:any, signerOffset:any) {
     builder.addFieldOffset(2, signerOffset, 0);
 };
 
@@ -284,7 +284,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addSigner = function(builder:any,
  * @param {Array.<number>} data
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.createSignerVector = function(builder:any, data:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.createSignerVector = function (builder:any, data:any) {
     builder.startVector(1, data.length, 1);
     for (var i = data.length - 1; i >= 0; i--) {
         builder.addInt8(data[i]);
@@ -296,7 +296,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.createSignerVector = function(bui
  * @param {flatbuffers.Builder} builder
  * @param {number} numElems
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startSignerVector = function(builder:any, numElems:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startSignerVector = function (builder:any, numElems:any) {
     builder.startVector(1, numElems, 1);
 };
 
@@ -304,7 +304,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.startSignerVector = function(buil
  * @param {flatbuffers.Builder} builder
  * @param {number} version
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addVersion = function(builder:any, version:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addVersion = function (builder:any, version:any) {
     builder.addFieldInt16(3, version, 0);
 };
 
@@ -312,7 +312,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addVersion = function(builder:any
  * @param {flatbuffers.Builder} builder
  * @param {number} type
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addType = function(builder:any, type:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addType = function (builder:any, type:any) {
     builder.addFieldInt16(4, type, 0);
 };
 
@@ -320,7 +320,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addType = function(builder:any, t
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} feeOffset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addFee = function(builder:any, feeOffset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addFee = function (builder:any, feeOffset:any) {
     builder.addFieldOffset(5, feeOffset, 0);
 };
 
@@ -329,7 +329,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addFee = function(builder:any, fe
  * @param {Array.<number>} data
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.createFeeVector = function(builder:any, data:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.createFeeVector = function (builder:any, data:any) {
     builder.startVector(4, data.length, 4);
     for (var i = data.length - 1; i >= 0; i--) {
         builder.addInt32(data[i]);
@@ -341,7 +341,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.createFeeVector = function(builde
  * @param {flatbuffers.Builder} builder
  * @param {number} numElems
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startFeeVector = function(builder:any, numElems:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startFeeVector = function (builder:any, numElems:any) {
     builder.startVector(4, numElems, 4);
 };
 
@@ -349,7 +349,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.startFeeVector = function(builder
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} deadlineOffset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addDeadline = function(builder:any, deadlineOffset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addDeadline = function (builder:any, deadlineOffset:any) {
     builder.addFieldOffset(6, deadlineOffset, 0);
 };
 
@@ -358,7 +358,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addDeadline = function(builder:an
  * @param {Array.<number>} data
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.createDeadlineVector = function(builder:any, data:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.createDeadlineVector = function (builder:any, data:any) {
     builder.startVector(4, data.length, 4);
     for (var i = data.length - 1; i >= 0; i--) {
         builder.addInt32(data[i]);
@@ -370,23 +370,23 @@ Catapult.Buffers.AddressAliasTransactionBuffer.createDeadlineVector = function(b
  * @param {flatbuffers.Builder} builder
  * @param {number} numElems
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startDeadlineVector = function(builder:any, numElems:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startDeadlineVector = function (builder:any, numElems:any) {
     builder.startVector(4, numElems, 4);
 };
 
 /**
  * @param {flatbuffers.Builder} builder
- * @param {number} actionType
+ * @param {number} aliasAction
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addActionType = function(builder:any, actionType:any) {
-    builder.addFieldInt8(7, actionType, 0);
+Catapult.Buffers.AddressAliasTransactionBuffer.addAliasAction = function (builder:any, aliasAction:any) {
+    builder.addFieldInt8(7, aliasAction, 0);
 };
 
 /**
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} deltaOffset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addNamespaceId = function(builder:any, namespaceIdOffset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addNamespaceId = function (builder:any, namespaceIdOffset:any) {
     builder.addFieldOffset(8, namespaceIdOffset, 0);
 };
 
@@ -395,7 +395,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addNamespaceId = function(builder
  * @param {Array.<number>} data
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.createNamespaceIdVector = function(builder:any, data:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.createNamespaceIdVector = function (builder:any, data:any) {
     builder.startVector(4, data.length, 4);
     for (var i = data.length - 1; i >= 0; i--) {
         builder.addInt32(data[i]);
@@ -407,7 +407,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.createNamespaceIdVector = functio
  * @param {flatbuffers.Builder} builder
  * @param {number} numElems
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startNamespaceIdVector = function(builder:any, numElems:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startNamespaceIdVector = function (builder:any, numElems:any) {
     builder.startVector(4, numElems, 4);
 };
 
@@ -415,7 +415,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.startNamespaceIdVector = function
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} mosaicIdOffset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.addAddress = function(builder:any, addressOffset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.addAddress = function (builder:any, addressOffset:any ) {
     builder.addFieldOffset(9, addressOffset, 0);
 };
 
@@ -424,7 +424,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.addAddress = function(builder:any
  * @param {Array.<number>} data
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.createAddressVector = function(builder:any, data:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.createAddressVector = function (builder:any , data:any ) {
     builder.startVector(1, data.length, 1);
     for (var i = data.length - 1; i >= 0; i--) {
         builder.addInt8(data[i]);
@@ -436,7 +436,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.createAddressVector = function(bu
  * @param {flatbuffers.Builder} builder
  * @param {number} numElems
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.startAddressVector = function(builder:any, numElems:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.startAddressVector = function (builder:any , numElems:any ) {
     builder.startVector(1, numElems, 1);
 };
 
@@ -444,7 +444,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.startAddressVector = function(bui
  * @param {flatbuffers.Builder} builder
  * @returns {flatbuffers.Offset}
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.endAddressAliasTransactionBuffer = function(builder:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.endAddressAliasTransactionBuffer = function (builder:any ) {
     var offset = builder.endObject();
     return offset;
 };
@@ -453,7 +453,7 @@ Catapult.Buffers.AddressAliasTransactionBuffer.endAddressAliasTransactionBuffer 
  * @param {flatbuffers.Builder} builder
  * @param {flatbuffers.Offset} offset
  */
-Catapult.Buffers.AddressAliasTransactionBuffer.finishAddressAliasTransactionBufferBuffer = function(builder:any, offset:any) {
+Catapult.Buffers.AddressAliasTransactionBuffer.finishAddressAliasTransactionBufferBuffer = function (builder:any , offset:any ) {
     builder.finish(offset);
 };
 

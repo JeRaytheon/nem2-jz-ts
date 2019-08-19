@@ -1,5 +1,3 @@
-
-
 export * from './UInt64';
 export * from './Id';
 
@@ -53,7 +51,7 @@ export * from './namespace/NamespaceId';
 export * from './namespace/NamespaceInfo';
 export * from './namespace/NamespaceName';
 export * from './namespace/NamespaceType';
-export * from './namespace/AliasActionType';
+export * from './namespace/AliasAction';
 
 // Node
 export * from './node/NodeInfo';
