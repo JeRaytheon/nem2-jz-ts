@@ -38,6 +38,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.136.tgz#413e85089046b865d960c9ff1d400e04c31ab60f"
   integrity sha512-0GJhzBdvsW2RUccNHOBkabI8HZVdOXmXbXhuKlDEd5Vv12P7oAVGfomGp3Ne21o5D/qu1WmthlNKFaoZJJeErA==
 
+"@types/long@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
+  integrity sha512-1w52Nyx4Gq47uuu0EVcsHBxZFJgurQ+rTKS3qMHxR1GY2T8c2AJYd6vZoZ9q1rupaDjU0yT+Jc2XTyXkjeMA+Q==
+
 "@types/mocha@^2.2.44":
   version "2.2.48"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.48.tgz#3523b126a0b049482e1c3c11877460f76622ffab"
@@ -386,11 +391,6 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-flatbuffers@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/flatbuffers/-/flatbuffers-1.11.0.tgz#90a47e584dd7851ad7a913f5a0ee99c1d76ce59f"
-  integrity sha512-0PqFKtXI4MjxomI7jO4g5XfLPm/15g2R+5WGCHBGYGh0ihQiypnHlJ6bMmkkrAe0GzZ4d7PDAfCONKIPUxNF+A==
-
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -624,6 +624,11 @@ lodash@^4.17.11, lodash@^4.17.5:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
+long@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+  integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
+
 loud-rejection@^1.0.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -694,18 +699,19 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-nem2-sdk@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/nem2-sdk/-/nem2-sdk-0.13.1.tgz#d4c2312d1dc0bfd58e74d0b00ce502de3773a6af"
-  integrity sha512-sIN/RWR+BNDR1av8f0tstpC6mFpTaU0b9PKaXlvYlQQfHLvUQ25+boLUf1deV/XwnSdxRp6Y91yPkOAeV2MH1A==
+nem2-sdk@^0.13.3:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/nem2-sdk/-/nem2-sdk-0.13.3.tgz#c7edd4bdfe1cdcce338f14a5462d3d93c87a28b3"
+  integrity sha512-Rf9Or97TxNPpR20q1ZCyH5/ApHV54OM+2mj8De2RaAv/a4xdWSbglXxqjxz+7NSooILrXdGwV71NFam1oJpQuw==
   dependencies:
+    "@types/long" "^4.0.0"
     bluebird "^3.5.5"
     crypto-js "^3.1.9-1"
-    flatbuffers "^1.11.0"
     js-joda "^1.6.2"
     js-sha256 "^0.9.0"
     js-sha3 "^0.8.0"
-    request "^2.83.0"
+    long "^4.0.0"
+    request "^2.88.0"
     request-promise-native "^1.0.5"
     ripemd160 "^2.0.2"
     rxjs "^6.2.1"
@@ -879,7 +885,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.1"
     tough-cookie "^2.3.3"
 
-request@^2.83.0:
+request@^2.88.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==

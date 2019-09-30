@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "",
     "scripts": {
-        "start": "ts-node-dev --respawn --transpileOnly src/index.ts",
+        "start": "ts-node-dev --respawn --transpileOnly index.ts",
         "style:prettier": "prettier --write \"src/**/*.ts\"",
         "style:lint": "tslint -p tsconfig.json -c tslint.json",
         "build": "rm -rf dist/ && tsc"
@@ -27,7 +27,7 @@
         "typescript-require": "^0.2.9-1"
     },
     "dependencies": {
-        "utf8": "^2.1.2",
-        "nem2-sdk": "^0.13.1"
+        "nem2-sdk": "^0.13.3",
+        "utf8": "^2.1.2"
     }
 }
