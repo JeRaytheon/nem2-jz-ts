@@ -51,7 +51,6 @@ export class HttpService {
         return signedTransaction.hash;
     }
 
-
     /**
      * 根据事务hash获取事务状态
      * @param transactionHash
@@ -66,19 +65,24 @@ export class HttpService {
      * 根据事务hash获取事务信息
      * @param transactionHash
      */
-    public static async getServiceInfoBy(transactionHash: string): Promise<Transaction> {
+    public static async getServiceInfoBy(transactionHash: string): Promise<any> {
         const transactionHttp = new TransactionHttp(apiUrl);
-        return await transactionHttp.getTransaction(transactionHash).toPromise();
+        const transaction: any = await transactionHttp.getTransaction(transactionHash).toPromise();
+        return transaction.message;
     }
-
 
     /**
      * 根据事务hash获取事务信息List
      * @param transactionHashs
      */
-    public static async getServiceInfos(transactionHashs: string[]): Promise<Transaction[]> {
+    public static async getServiceInfos(transactionHashs: string[]): Promise<any> {
+        let messageList: any = [];
         const transactionHttp = new TransactionHttp(apiUrl);
-        return await transactionHttp.getTransactions(transactionHashs).toPromise();
+        const transactions: any = await transactionHttp.getTransactions(transactionHashs).toPromise();
+        for (let transactionsKey in transactions) {
+            messageList.push(transactions);
+        }
+        return messageList
     }
 
     /**
@@ -91,5 +95,6 @@ export class HttpService {
         const account: PublicAccount = PublicAccount.createFromPublicKey(publicKey, netType);
         return await accountHttp.transactions(account.address).toPromise();
     }
+
 
 }
