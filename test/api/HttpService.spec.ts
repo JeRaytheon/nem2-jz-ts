@@ -9,6 +9,7 @@ describe('service', () => {
     it('identity upto chain service', async (done) => {
 
         const account = Account.createFromPrivateKey(testAccount.private,netType)
+
         const identityData = new IdentityModel();
         identityData.name = 'test-name';
         identityData.license = 'test-license';

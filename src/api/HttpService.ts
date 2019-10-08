@@ -90,7 +90,6 @@ export class HttpService {
      * @param address
      */
     public static async getServiceInfosByAddress(publicKey: string): Promise<Transaction[]> {
-
         const accountHttp = new AccountHttp(apiUrl);
         const account: PublicAccount = PublicAccount.createFromPublicKey(publicKey, netType);
         return await accountHttp.transactions(account.address).toPromise();
