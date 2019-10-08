@@ -3,7 +3,7 @@ import {NetworkType, UInt64} from "nem2-sdk";
 export const apiUrl = "http://47.108.88.254:3000";
 
 
-export const generationHash = "4B069CCB8105938F0430D3AF5386F7484F14692023E8FFB3EB3B18C08CC32892";
+export const generationHash = "B2A783F967EADC5982ABA2114B7F7A379897E0F215A13B080EFDBAA60204619E";
 export const netType = NetworkType.MAIN_NET;
 export const fee = UInt64.fromUint(5)
 
