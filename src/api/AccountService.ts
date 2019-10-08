@@ -6,6 +6,4 @@ export class AccountService {
     public static createAccount(){
         return Account.generateNewAccount(netType);
     }
-    
-
 }
