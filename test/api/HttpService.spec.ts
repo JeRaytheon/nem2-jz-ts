@@ -8,10 +8,10 @@ describe('service', () => {
 
     it('identity upto chain service', async (done) => {
         const testAccount = {
-            private: "5955373D9898E2FBC9247A73CF5EEB2E07CA81E92FC2E2CDFF1E8A81024288DC"
+            private: "64511ECAB0F03F1182F4F1C58E542BAA68A26D1ECFF85791CAF89128D3325E55"
         }
         const identityAccount = {
-            private: "FB650A6142E24B2909399538588CE86527C5F6D3703D8117724988FA7AEA1160"
+            private: "22C11EBE4D5ABE56EAE2EED4D546930FAB413065189E983D32DC7ADD0CD14FC3"
         }
         const account = Account.createFromPrivateKey(testAccount.private, netType)
 
