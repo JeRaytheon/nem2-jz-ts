@@ -42,7 +42,7 @@ export class HttpService {
         const identityTransaction: TransferTransaction = TransferTransaction.create(
             Deadline.create(),
             recipientPublicAccount.address,
-            [NetworkCurrencyMosaic.createAbsolute(0)],
+            [NetworkCurrencyMosaic.createAbsolute(1)],
             message,
             netType,
             fee);
