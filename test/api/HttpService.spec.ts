@@ -1,5 +1,5 @@
 import {HttpService} from "../../src/api/HttpService";
-import {netType} from "../../src/config/config";
+import {apiUrl, netType} from "../../src/config/config";
 import {TabType} from "../../src/model/TabType";
 import {IdentityModel} from "../../src/model/IdentityModel";
 import {Account} from "nem2-sdk";
@@ -21,7 +21,7 @@ describe('service', () => {
         identityData.bankAccountInfo = 'test-bankAccountInfo';
 
         const data = IdentityModel.toJsonStr(identityData);
-        const service = await HttpService.uptoChainServiceCommon(identityAccount.private, TabType.identity, account.publicKey, data, false);
+        const service = await HttpService.uptoChainServiceCommon(apiUrl,identityAccount.private, TabType.identity, account.publicKey, data, false);
         console.info(service);
     });
 

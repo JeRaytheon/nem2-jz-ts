@@ -6,7 +6,7 @@
 数据上链
 
     方法：为通用方法，任意数据都可以通过该方法上链
-        HttpService.uptoChainServiceCommon（systemAccountPrivateKey,tab,recipientPublicKey,data,isEncrypt）
+        HttpService.uptoChainServiceCommon（node,systemAccountPrivateKey,tab,recipientPublicKey,data,isEncrypt）
 
     参数说明：
         systemAccountPrivateKey 不用角色对应系统帐号私钥
@@ -66,7 +66,7 @@
     const account = AccountService.createFromPrivateKey(private)
     account.publicKey
 
-如果根据公钥获取地址
+根据公钥获取地址
     const publicAccount = AccountService.createFromPublicKey(publicKey);
     publicAccount包含地址对象和公钥
 

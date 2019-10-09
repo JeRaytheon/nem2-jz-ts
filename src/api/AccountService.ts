@@ -1,5 +1,15 @@
-import {Account, PublicAccount} from "nem2-sdk";
-import {netType} from "../config/config";
+import {
+    Account,
+    AccountHttp,
+    AccountInfo,
+    Address,
+    MosaicAmountView,
+    MosaicHttp,
+    MosaicId,
+    MosaicService,
+    PublicAccount
+} from "nem2-sdk";
+import {apiUrl, netType} from "../config/config";
 
 export class AccountService {
 
@@ -24,7 +34,8 @@ export class AccountService {
      * @param publicKey
      * @param netType
      */
-    public static createFromPublicKey(publicKey:string) {
+    public static createFromPublicKey(publicKey: string) {
         return PublicAccount.createFromPublicKey(publicKey, netType);
     }
+
 }
