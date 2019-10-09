@@ -14,7 +14,6 @@ import {apiUrl, fee, generationHash, netType} from "../config/config";
 
 export class HttpService {
 
-
     /**
      * 通用上链数据接口
      *
