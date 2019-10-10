@@ -5,7 +5,7 @@ import {
     Message, MosaicAmountView, MosaicHttp, MosaicId, MosaicService,
     NetworkCurrencyMosaic,
     PlainMessage,
-    PublicAccount, SHA3Hasher,
+    PublicAccount,
     SignedTransaction, Transaction,
     TransactionHttp, TransactionStatus,
     TransferTransaction
