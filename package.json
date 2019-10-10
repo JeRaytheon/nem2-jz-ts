@@ -1,6 +1,6 @@
 {
     "name": "nem2-jz-ts",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "main": "index.js",
     "license": "",
     "scripts": {
@@ -28,7 +28,7 @@
     },
     "dependencies": {
         "mocha": "^6.2.1",
-        "nem2-sdk": "^0.13.1",
+        "nem2-sdk": "^0.14.0",
         "utf8": "^2.1.2"
     }
 }
