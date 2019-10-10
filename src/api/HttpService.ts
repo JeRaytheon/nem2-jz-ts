@@ -1,11 +1,11 @@
 import {
-    Account, AccountHttp, AccountInfo, Address,
+    Account, AccountHttp, AccountInfo, Address, Crypto,
     Deadline,
     EncryptedMessage,
     Message, MosaicAmountView, MosaicHttp, MosaicId, MosaicService,
     NetworkCurrencyMosaic,
     PlainMessage,
-    PublicAccount,
+    PublicAccount, SHA3Hasher,
     SignedTransaction, Transaction,
     TransactionHttp, TransactionStatus,
     TransferTransaction
@@ -57,6 +57,37 @@ export class HttpService {
 
 
     }
+
+    /**
+     * 系统资产交易服务
+     * @param node节点
+     * @param accountPrivateKey私钥
+     * @param recipientAddress接受方地址
+     * @param amount 转账数额
+     * @param bz 可传参数
+     */
+    public static async transactionService(node: string, accountPrivateKey: string, recipientAddress: string, amount: number, bz?: string) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const transactionHttp = new TransactionHttp(node);
+                const account = Account.createFromPrivateKey(accountPrivateKey, netType);
+                let message: Message = PlainMessage.create(bz);
+                const identityTransaction: TransferTransaction = TransferTransaction.create(
+                    Deadline.create(),
+                    Address.createFromRawAddress(recipientAddress),
+                    [NetworkCurrencyMosaic.createAbsolute(amount)],
+                    message,
+                    netType,
+                    fee);
+                const signedTransaction: SignedTransaction = account.sign(identityTransaction, generationHash);
+                transactionHttp.announce(signedTransaction);
+                resolve(signedTransaction.hash)
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+
 
     /**
      * 根据事务hash获取事务状态
