@@ -112,7 +112,7 @@ export class HttpService {
      * @param transactionHash
      * @node  node 服务器节点
      */
-    public static async getServiceInfoBy(transactionHash: string, node: string): Promise<any> {
+    public static async getServiceInfo(transactionHash: string, node: string): Promise<any> {
         return new Promise(async (resolve, reject) => {
             try {
                 const transactionHttp = new TransactionHttp(node);
@@ -181,7 +181,6 @@ export class HttpService {
                 reject(error)
             }
         });
-
     }
 
     /**
