@@ -34,10 +34,10 @@ export class AccountService {
     /**
      * 创建加密信息
      * @param message 待加密信息
-     * @param privateKey 加密人私钥
      * @param recipientPublicAccount 解密人公钥
+     * @param privateKey 加密人私钥
      */
-    public encryptMessage(message: string, privateKey: string, recipientPublicAccount: PublicAccount): EncryptedMessage {
+    public static encryptMessage(message: string, recipientPublicAccount: PublicAccount, privateKey: string): EncryptedMessage {
         return EncryptedMessage.create(message, recipientPublicAccount, privateKey, netType);
     }
 
@@ -47,7 +47,8 @@ export class AccountService {
      * @param privateKey 解密人私钥
      * @param publicAccount 加密人公钥
      */
-    public decryptMessage(encryptedMessage: EncryptedMessage, privateKey: string, publicAccount: PublicAccount): PlainMessage {
-        return EncryptedMessage.decrypt(encryptedMessage, privateKey, publicAccount, netType);
+    public static decryptMessage(payload: string, privateKey: string, publicAccount: PublicAccount): PlainMessage {
+        const account = AccountService.createFromPrivateKey(privateKey);
+        return EncryptedMessage.decrypt(new EncryptedMessage(payload, account.publicAccount), privateKey, publicAccount, netType);
     }
 }

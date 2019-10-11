@@ -27,6 +27,7 @@
         "typescript-require": "^0.2.9-1"
     },
     "dependencies": {
+        "chai": "^4.2.0",
         "mocha": "^6.2.1",
         "nem2-sdk": "^0.14.0",
         "utf8": "^2.1.2"

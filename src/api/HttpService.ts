@@ -11,6 +11,7 @@ import {
     TransferTransaction
 } from "nem2-sdk";
 import {fee, generationHash, netType} from "../config/config";
+import {AssetsModel} from "../model/AssetsModel";
 
 export class HttpService {
 
@@ -188,9 +189,10 @@ export class HttpService {
      * @param addressStr
      * @param node
      */
-    public static async getAssets(addressStr: string, node: string): Promise<MosaicAmountView[]> {
+    public static async getAssets(addressStr: string, node: string): Promise<AssetsModel[]> {
 
         return new Promise(async (resolve, reject) => {
+            let assetsList: AssetsModel[] = [];
             try {
                 const accountHttp = new AccountHttp(node)
                 const mosaicHttp = new MosaicHttp(node)
@@ -211,8 +213,14 @@ export class HttpService {
                         if (mosaicView === undefined) throw new Error('A MosaicView was not found')
                         return new MosaicAmountView(mosaicView.mosaicInfo, mosaic.amount)
                     })
-
-                resolve(mosaicAmountViews)
+                mosaicAmountViews.forEach(mosaicAmountView => {
+                    assetsList.push({
+                            name: AssetsModel.transformation(mosaicAmountView.fullName()),
+                            amount: mosaicAmountView.relativeAmount()
+                        }
+                    )
+                })
+                resolve(assetsList)
             } catch (error) {
                 reject(error)
             }
