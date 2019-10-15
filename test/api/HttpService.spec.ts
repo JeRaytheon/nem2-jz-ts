@@ -4,7 +4,6 @@ import {TabType} from "../../src/model/TabType";
 import {IdentityModel} from "../../src/model/IdentityModel";
 import {expect} from 'chai';
 import {AccountService} from "../../src/api/AccountService";
-import {AssetsModel} from "../../src/model/AssetsModel";
 
 describe('HttpService', () => {
 
