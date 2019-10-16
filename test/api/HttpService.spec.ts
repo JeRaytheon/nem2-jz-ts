@@ -15,7 +15,8 @@ describe('HttpService', () => {
         identityData.license = 'test-license';
         identityData.bankAccountInfo = 'test-bankAccountInfo';
         const data = IdentityModel.toJsonStr(identityData);
-        const hash = await HttpService.uptoChainServiceCommon(apiUrl, '22C11EBE4D5ABE56EAE2EED4D546930FAB413065189E983D32DC7ADD0CD14FC3',
+
+        const hash = await HttpService.uptoChainServiceCommon(apiUrl, 'A2167EAD6317768312A4EDDE543224B47A9F39523D42370981BAA911A1461FA8',
             TabType.identity, testAccount.publicKey, data, false);
         console.info(hash)
         expect(hash).to.be.not.equal(undefined);
@@ -24,18 +25,18 @@ describe('HttpService', () => {
     it('transactionService', async () => {
 
         const testAccount = AccountService.createFromPrivateKey('64511ECAB0F03F1182F4F1C58E542BAA68A26D1ECFF85791CAF89128D3325E55')
-        const hash = await HttpService.transactionService(apiUrl, '22C11EBE4D5ABE56EAE2EED4D546930FAB413065189E983D32DC7ADD0CD14FC3', testAccount.address.plain(), 123, "test");
+        const hash = await HttpService.transactionService(apiUrl, 'A2167EAD6317768312A4EDDE543224B47A9F39523D42370981BAA911A1461FA8', testAccount.address.plain(), 123, "test");
         expect(hash).to.be.not.equal(undefined);
     });
 
     it('getServiceStatus', async () => {
-        const serviceStatus = await HttpService.getServiceStatus('0B72A403140A12EFC97CD5FBE7022CB5CDF14AEB3F5D06D9205FC793F5C8DFDD', apiUrl);
-        expect(serviceStatus.hash).to.be.equal('0B72A403140A12EFC97CD5FBE7022CB5CDF14AEB3F5D06D9205FC793F5C8DFDD');
+        const serviceStatus = await HttpService.getServiceStatus('DE83531871E2975AE69B1A67657606A0166B45236A208006CDBDAEDFB6E306F1', apiUrl);
+        expect(serviceStatus.hash).to.be.equal('DE83531871E2975AE69B1A67657606A0166B45236A208006CDBDAEDFB6E306F1');
         expect(serviceStatus.status).to.be.equal('Success');
     });
 
     it('getServiceInfo', async () => {
-        const serviceInfo = await HttpService.getServiceInfo('0B72A403140A12EFC97CD5FBE7022CB5CDF14AEB3F5D06D9205FC793F5C8DFDD', apiUrl);
+        const serviceInfo = await HttpService.getServiceInfo('DE83531871E2975AE69B1A67657606A0166B45236A208006CDBDAEDFB6E306F1', apiUrl);
         const identityData: {
             type: string,
             data: any

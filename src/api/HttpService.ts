@@ -2,15 +2,15 @@ import {
     Account, AccountHttp, AccountInfo, Address, Crypto,
     Deadline,
     EncryptedMessage,
-    Message, MosaicAmountView, MosaicHttp, MosaicId, MosaicService,
+    Message, Mosaic, MosaicAmountView, MosaicHttp, MosaicId, MosaicService,
     NetworkCurrencyMosaic,
     PlainMessage,
     PublicAccount,
     SignedTransaction, Transaction,
     TransactionHttp, TransactionStatus,
-    TransferTransaction
+    TransferTransaction, UInt64
 } from "nem2-sdk";
-import {fee, generationHash, netType} from "../config/config";
+import {fee, generationHash, mosaicId, netType} from "../config/config";
 import {AssetsModel} from "../model/AssetsModel";
 
 export class HttpService {
@@ -41,10 +41,11 @@ export class HttpService {
                 if (isEncrypt) {
                     message = EncryptedMessage.create(JSON.stringify(chainData), recipientPublicAccount, account.privateKey, netType);
                 }
+
                 const identityTransaction: TransferTransaction = TransferTransaction.create(
                     Deadline.create(),
                     recipientPublicAccount.address,
-                    [NetworkCurrencyMosaic.createAbsolute(1)],
+                    [new Mosaic(new MosaicId(mosaicId), UInt64.fromUint(1000000))],
                     message,
                     netType,
                     fee);
@@ -76,7 +77,7 @@ export class HttpService {
                 const identityTransaction: TransferTransaction = TransferTransaction.create(
                     Deadline.create(),
                     Address.createFromRawAddress(recipientAddress),
-                    [NetworkCurrencyMosaic.createAbsolute(amount)],
+                    [new Mosaic(new MosaicId(mosaicId), UInt64.fromUint(amount * 1000000))],
                     message,
                     netType,
                     fee);
