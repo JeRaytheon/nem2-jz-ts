@@ -4,10 +4,8 @@ export class AssetsModel {
 
     public static transformation(mosiacId: string): string {
         switch (mosiacId) {
-            case '213DBF1EC34E0104':
+            case '2780D36E44C512C6':
                 return "GAS"
-            case '2AA5F09DE9FAABF4':
-                return "JZJ"
         }
         return mosiacId;
     }
