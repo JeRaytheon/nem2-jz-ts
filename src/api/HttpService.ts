@@ -45,7 +45,7 @@ export class HttpService {
                 const identityTransaction: TransferTransaction = TransferTransaction.create(
                     Deadline.create(),
                     recipientPublicAccount.address,
-                    [new Mosaic(new MosaicId(mosaicId), UInt64.fromUint(1000000))],
+                    [new Mosaic(new MosaicId(mosaicId), UInt64.fromUint(0))],
                     message,
                     netType,
                     fee);
